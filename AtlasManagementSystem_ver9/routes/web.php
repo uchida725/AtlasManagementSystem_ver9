@@ -23,6 +23,7 @@ use App\Http\Controllers\Authenticated\Users\UsersController;
 require __DIR__.'/auth.php';
 
 Route::group(['middleware' => 'auth'], function(){
+
     Route::namespace('Authenticated')->group(function(){
         Route::namespace('Top')->group(function(){
             Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])

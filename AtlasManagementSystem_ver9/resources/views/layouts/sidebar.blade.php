@@ -20,13 +20,13 @@
     <body class="all_content">
         <div class="d-flex">
             <div class="sidebar">
-                <p><a href="{{ route('top.show') }}">トップ</a></p>
-                <p><a href="/logout">ログアウト</a></p>
-                <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
-                <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-                <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
-                <p><a href="{{ route('post.show') }}">掲示板</a></p>
-                <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+                <p class="side_title"><img src="../image/home.png"width="20" height="20"><a href="{{ route('top.show') }}">マイページ</a></p>
+                <p class="side_title"><img src="../image/logout.png"width="20" height="20"><a href="/logout">ログアウト</a></p>
+                <p class="side_title"><img src="../image/calendar.png"width="20" height="20"><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+                <p class="side_title"><img src="../image/check.png"width="20" height="20"><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
+                <p class="side_title"><img src="../image/pen.png"width="20" height="20"><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+                <p class="side_title"><img src="../image/comment.png"width="20" height="20"><a href="{{ route('post.show') }}">掲示板</a></p>
+                <p class="side_title"><img src="../image/user.png"width="20" height="20"><a href="{{ route('user.show') }}">ユーザー検索</a></p>
             </div>
             <div class="main-container">
                 {{ $slot }}

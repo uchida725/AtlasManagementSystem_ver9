@@ -16,12 +16,32 @@ li {
   list-style: none;
 }
 
+
+/* 新規登録画面・ログインページ */
+.top_logo {
+  text-align: center;
+  margin-bottom: -14%;
+  margin-top: 14%;
+}
+
+.top_box {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 1px 8px 15px rgba(0, 0, 0, 0.2);
+
+}
+
 /* サイドバー */
 .sidebar {
-  width: 150px;
+  width: 200px;
   height: 100vh;
   background-color: #03AAD2;
   font-weight: bold;
+}
+
+.side_title {
+  margin-top: 10%;
+  margin-left: 5%;
 }
 
 .main-container {
@@ -30,12 +50,14 @@ li {
 
 .sidebar p a {
   color: #FFF;
+  padding: 3%;
 }
 
 /* トップページ */
 .user_status {
   border-radius: 10px;
   background: #FFF;
+  box-shadow: 3px 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* スクール予約関連 */
@@ -243,11 +265,11 @@ li {
   flex-wrap: wrap;
   width: 800px;
   margin: 10px auto;
-  height: 80vh;
+  height: 60vh;
   overflow: scroll;
-  padding: 10px;
-  background: #FFF;
-  border-radius: 5px;
+  /* padding: 10px; */
+  background: #ECF1F6;
+  /* border-radius: 5px; */
 }
 
 .reserve_users_area span {
@@ -255,8 +277,12 @@ li {
 }
 
 .one_person {
-  width: 250px;
-  height: 250px;
+  width: 180px;
+  height: 200px;
+  margin: 0 1% 0 1%;
+  background: #FFF;
+  border-radius: 10px;
+  box-shadow: 3px 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .search_conditions span {
@@ -276,4 +302,19 @@ li {
 
 .subject_inner {
   display: none;
+}
+
+.user_search_profile {
+  margin: 10% 0 0 10%;
+  color: #9E9E9E;
+  /* font-weight: bold; */
+}
+
+.user_select {
+  color: black;
+}
+
+
+.search_label {
+  display: block;
 }

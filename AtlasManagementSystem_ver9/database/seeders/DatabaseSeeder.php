@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
     {
         // Register your seeders here
         $this->call([
+            // 作成したSeederクラスをcall()メソッドに渡す
+            UsersTableSeeder::class,
+            SubjectsTableSeeder::class,
 
         ]);
     }

@@ -2,6 +2,16 @@
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
       <div class="top_box w-25 vh-75 border p-3">
+        @if ($errors->has('over_name'))
+         <div class="text-danger">
+           {{ $errors->first('over_name') }}
+         </div>
+        @endif
+          @if ($errors->has('under_name'))
+            <div class="text-danger">
+              {{ $errors->first('under_name') }}
+            </div>
+          @endif
         <div class="register_form">
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
@@ -17,6 +27,16 @@
               </div>
             </div>
           </div>
+          @if ($errors->has('over_name_kana'))
+            <div class="text-danger">
+               {{ $errors->first('over_name_kana') }}
+            </div>
+          @endif
+            @if ($errors->has('under_name_kana'))
+             <div class="text-danger">
+        {{ $errors->first('under_name_kana') }}
+            </div>
+             @endif
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">セイ</label>
@@ -32,18 +52,24 @@
             </div>
           </div>
           <div class="mt-3">
+            @if ($errors->has('mail_address'))
+              <div class="text-danger">
+                {{ $errors->first('mail_address') }}
+              </div>
+            @endif
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
             </div>
           </div>
-          @if ($errors->has('mail_address'))
-    <div class="text-danger">
-        {{ $errors->first('mail_address') }}
-    </div>
-@endif
+
         </div>
         <div class="mt-3">
+          @if ($errors->has('sex'))
+         <div class="text-danger">
+        {{ $errors->first('sex') }}
+         </div>
+          @endif
           <input type="radio" name="sex" class="sex" value="1">
           <label style="font-size:13px">男性</label>
           <input type="radio" name="sex" class="sex" value="2">
@@ -52,10 +78,20 @@
           <label style="font-size:13px">その他</label>
         </div>
         <div class="mt-3">
+          @if ($errors->has('old_month'))
+             <div class="text-danger">
+                {{ $errors->first('old_month') }}
+             </div>
+          @endif
+           @if ($errors->has('old_day'))
+              <div class="text-danger">
+                {{ $errors->first('old_day') }}
+              </div>
+           @endif
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
           <select class="old_year" name="old_year">
             <option value="none">-----</option>
-            <option value="1985">1985</option>
+            <!-- <option value="1985">1985</option>
             <option value="1986">1986</option>
             <option value="1987">1987</option>
             <option value="1988">1988</option>
@@ -69,7 +105,7 @@
             <option value="1996">1996</option>
             <option value="1997">1997</option>
             <option value="1998">1998</option>
-            <option value="1999">1999</option>
+            <option value="1999">1999</option> -->
             <option value="2000">2000</option>
             <option value="2001">2001</option>
             <option value="2002">2002</option>
@@ -81,6 +117,21 @@
             <option value="2008">2008</option>
             <option value="2009">2009</option>
             <option value="2010">2010</option>
+            <option value="2010">2011</option>
+            <option value="2010">2012</option>
+            <option value="2010">2013</option>
+            <option value="2010">2014</option>
+            <option value="2010">2015</option>
+            <option value="2010">2016</option>
+            <option value="2010">2017</option>
+            <option value="2010">2018</option>
+            <option value="2010">2019</option>
+            <option value="2010">2020</option>
+            <option value="2010">2021</option>
+            <option value="2010">2022</option>
+            <option value="2010">2023</option>
+            <option value="2010">2024</option>
+            <option value="2010">2025</option>
           </select>
           <label style="font-size:13px">年</label>
           <select class="old_month" name="old_month">
@@ -136,6 +187,11 @@
           <label style="font-size:13px">日</label>
         </div>
         <div class="mt-3">
+          @if ($errors->has('role'))
+          <div class="text-danger">
+           {{ $errors->first('role') }}
+          </div>
+          @endif
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <input type="radio" name="role" class="admin_role role" value="1">
           <label style="font-size:13px">教師(国語)</label>
@@ -156,6 +212,11 @@
           @endforeach
         </div>
         <div class="mt-3">
+          @if ($errors->has('password'))
+          <div class="text-danger">
+            {{ $errors->first('password') }}
+          </div>
+          @endif
           <label class="d-block m-0" style="font-size:13px">パスワード</label>
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password" name="password">

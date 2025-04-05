@@ -37,6 +37,11 @@
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
             </div>
           </div>
+          @if ($errors->has('mail_address'))
+    <div class="text-danger">
+        {{ $errors->first('mail_address') }}
+    </div>
+@endif
         </div>
         <div class="mt-3">
           <input type="radio" name="sex" class="sex" value="1">

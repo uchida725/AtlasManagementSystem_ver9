@@ -37,6 +37,27 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        //バリデーション設定
+        $validatedData = $request->validate([
+              'over_name' => 'required|string|max:10',
+              'under_name' => 'required|string|max:10',
+              'over_name_kana' => 'required|string|regex:/^[ァ-ヶー　]+$/u|max:30',
+              'under_name_kana' => 'required|string|regex:/^[ァ-ヶー　]+$/u|max:30',
+              'mail_address' => 'required|string|email:strict,dns|max:100|unique:users,email',
+              'sex' => 'required|in:1,2,3',
+              'birth_day' => 'required|date|after_or_equal:2000-01-01|before_or_equal:today',
+              'role' => 'required|in:1,2,3,4',
+              'password' => 'required|min:8|max:30|confirmed',
+              'password_confirmation' => 'required|min:8|max:30',
+        ], $message= [
+
+            'mail_address.required' => '※メール形式で入力してください',
+        ]);
+        //ここまで
+
+
         DB::beginTransaction();
         try{
             $old_year = $request->old_year;

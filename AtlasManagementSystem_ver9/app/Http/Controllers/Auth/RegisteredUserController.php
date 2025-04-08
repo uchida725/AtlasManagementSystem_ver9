@@ -78,8 +78,8 @@ class RegisteredUserController extends Controller
     'old_month.required' => '生年月日の入力は必須です',
     'old_day.required' => '生年月日の入力は必須です',
     // 'old_year.date' => '生年月日の「年」は正しい日付を選択してください。',
-    'old_month.date' => '生年月日の「月」は正しい日付を選択してください。',
-    'old_day.date' => '生年月日の「日」は正しい日付を選択してください。',
+    // 'old_month.date' => '生年月日の「月」は正しい日付を選択してください。',
+    // 'old_day.date' => '生年月日の「日」は正しい日付を選択してください。',
 
 
     // 役職
@@ -105,11 +105,11 @@ class RegisteredUserController extends Controller
         'under_name' => 'required|string|max:10',
         'over_name_kana' => 'required|string|regex:/^[ァ-ヶー　]+$/u|max:30',
         'under_name_kana' => 'required|string|regex:/^[ァ-ヶー　]+$/u|max:30',
-        'mail_address' => 'required|string|email:strict,dns|max:100|unique:users,email',
+        'mail_address' => 'required|string|email:strict,dns|max:100|unique:users,mail_address',
         'sex' => 'required|in:1,2,3',
-        'old_year' => 'required|date|after_or_equal:2000-01-01|before_or_equal:today',
-        'old_month' => 'required|date|after_or_equal:2000-01-01|before_or_equal:today',
-        'old_day' => 'required|date|after_or_equal:2000-01-01|before_or_equal:today',
+        // 'old_year' => 'required|date|after_or_equal:2000-01-01|before_or_equal:today',
+        // 'old_month' => 'required',
+        // 'old_day' => 'required',
         'role' => 'required|in:1,2,3,4',
         'password' => 'required|min:8|max:30|confirmed',
         'password_confirmation' => 'required|min:8|max:30',
@@ -126,7 +126,8 @@ class RegisteredUserController extends Controller
             $old_day = $request->old_day;
             $data = $old_year . '-' . $old_month . '-' . $old_day;
             $birth_day = date('Y-m-d', strtotime($data));
-            $subjects = $request->subject;
+            // $subjects = $request->subject;
+            $subjects = $request->input('subject', []); // ← null対策！
 
             $user_get = User::create([
                 'over_name' => $request->over_name,

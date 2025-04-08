@@ -78,16 +78,11 @@
           <label style="font-size:13px">その他</label>
         </div>
         <div class="mt-3">
-          @if ($errors->has('old_month'))
+          @if ($errors->has('old_year'))
              <div class="text-danger">
-                {{ $errors->first('old_month') }}
+                {{ $errors->first('old_year') }}
              </div>
           @endif
-           @if ($errors->has('old_day'))
-              <div class="text-danger">
-                {{ $errors->first('old_day') }}
-              </div>
-           @endif
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>
           <select class="old_year" name="old_year">
             <option value="none">-----</option>

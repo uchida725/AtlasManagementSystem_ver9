@@ -295,7 +295,7 @@ li {
 }
 
 .search_conditions_inner {
-  display: none;
+  /* display: none; */
   background: #FFF;
 }
 
@@ -321,5 +321,10 @@ li {
 
 
 .search_label {
+  display: block;
+}
+
+
+.subject_type {
   display: block;
 }

@@ -49,7 +49,6 @@
       @foreach ($user->subjects as $subject)
         <span>{{ $subject->subject }}</span>
       @endforeach
-
     @endif
     @endif
 
@@ -107,13 +106,14 @@
           </div>
           </div>
         </div>
-      </div>
-      <div>
+        <div>
         <input type="submit" name="search_btn" value="検索" form="userSearchRequest">
       </div>
       <div>
         <input type="reset" value="リセット" form="userSearchRequest">
       </div>
+      </div>
+
     </div>
     <form action="{{ route('user.show') }}" method="get" id="userSearchRequest"></form>
   </div>

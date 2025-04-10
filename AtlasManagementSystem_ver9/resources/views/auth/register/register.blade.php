@@ -78,9 +78,9 @@
           <label style="font-size:13px">その他</label>
         </div>
         <div class="mt-3">
-          @if ($errors->has('old_year'))
+          @if ($errors->has('birth_day'))
              <div class="text-danger">
-                {{ $errors->first('old_year') }}
+                {{ $errors->first('birth_day') }}
              </div>
           @endif
           <label class="d-block m-0 aa" style="font-size:13px">生年月日</label>

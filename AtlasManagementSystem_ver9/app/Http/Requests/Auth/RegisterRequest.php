@@ -26,6 +26,7 @@ class RegisterRequest extends FormRequest
      *
      * @return array
      */
+
     public function rules()
     {
         return [
@@ -35,15 +36,41 @@ class RegisterRequest extends FormRequest
         'under_name_kana' => 'required|string|regex:/^[ァ-ヶー　]+$/u|max:30',
         'mail_address' => 'required|string|email:strict,dns|max:100|unique:users,mail_address',
         'sex' => 'required|in:1,2,3',
-        'old_year' => 'required|before:tomorrow',
-        'old_month' => 'required',
-        'old_day' => 'required',
+        // 'old_year' => 'required|before:tomorrow',
+        // 'old_month' => 'required',
+        // 'old_day' => 'required',
+        // 'birth_day' => 'required|date|after_or_equal:2000-01-01|before_or_equal:today',
         'role' => 'required|in:1,2,3,4',
         'password' => 'required|min:8|max:30|confirmed',
         'password_confirmation' => 'required|min:8|max:30',
     ];
 
     }
+
+    public function withValidator($validator)
+{
+    $validator->after(function ($validator) {
+        $year = $this->input('old_year');
+        $month = $this->input('old_month');
+        $day = $this->input('old_day');
+
+        // 存在する日付かどうかチェック（2/31などNG）
+        if (!checkdate((int)$month, (int)$day, (int)$year)) {
+            $validator->errors()->add('birth_day', '生年月日が正しくありません。');
+            return;
+        }
+
+        // 正常な日付なら、範囲チェック！
+        $birthDate = strtotime("$year-$month-$day");
+        $minDate = strtotime('2000-01-01');
+        $maxDate = strtotime(date('Y-m-d')); // 今日
+
+        if ($birthDate < $minDate || $birthDate > $maxDate) {
+            $validator->errors()->add('birth_day', '生年月日は2000年1月1日〜今日までの間で入力してください。');
+        }
+    });
+}
+
 
     public function messages(){
   return [
@@ -79,8 +106,7 @@ class RegisterRequest extends FormRequest
     'sex.required' => '性別は必須項目です。',
 
     // 生年月日
-    'old_year.required' => '生年月日の入力は必須です',
-    'old_year.before:tomorrow' => '生年月日は今日の日付より前の日を選択してください。',
+    // 'birth_day.required' => '生年月日の入力は必須です',
 
 
     // 役職
@@ -100,6 +126,9 @@ class RegisterRequest extends FormRequest
   ];
 
     }
+
+
+
 
 
     /**

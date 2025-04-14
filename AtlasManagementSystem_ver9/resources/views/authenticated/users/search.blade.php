@@ -57,9 +57,9 @@
     </div>
     @endforeach
   </div>
+  <!-- ここから検索機能 -->
   <div class="search_area w-25 border">
     <div class="">
-
       <div>
         <label class="search_label">検索</label>
         <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
@@ -99,19 +99,31 @@
           </div>
           <div>
             <label class="search_label">選択科目</label>
-            <div>国語<input type="checkbox" name="subject[]" value="1"></div>
+          </div>
+            <!-- <div>国語<input type="checkbox" name="subject[]" value="1"></div>
             <div>数学<input type="checkbox" name="subject[]" value="2"></div>
-            <div>英語<input type="checkbox" name="subject[]" value="3"></div>
+            <div>英語<input type="checkbox" name="subject[]" value="3"></div> -->
+            @foreach ($subjects as $subject)
+  <div>
+  <label>
+    {{ $subject->subject }}
+    <input type="checkbox" name="subject[]" value="{{ $subject->id }}"
+    {{ in_array($subject->id, (array) request('subject')) ? 'checked' : '' }}
+>
+  </label>
+</div>
+
+@endforeach
           </div>
           </div>
           </div>
-        </div>
-        <div>
+          <div>
         <input type="submit" name="search_btn" value="検索" form="userSearchRequest">
       </div>
       <div>
         <input type="reset" value="リセット" form="userSearchRequest">
       </div>
+        </div>
       </div>
 
     </div>

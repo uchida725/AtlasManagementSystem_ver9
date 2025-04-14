@@ -20,7 +20,8 @@ class UsersController extends Controller
         $updown = $request->updown;
         $gender = $request->sex;
         $role = $request->role;
-        $subjects = null;// ここで検索時の科目を受け取る
+        $subjects = $request->subject; // ← チェックボックスで選ばれた科目配列
+
         $userFactory = new SearchResultFactories();
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
         $subjects = Subjects::all();

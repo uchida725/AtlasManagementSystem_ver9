@@ -107,9 +107,7 @@
   <div>
   <label>
     {{ $subject->subject }}
-    <input type="checkbox" name="subject[]" value="{{ $subject->id }}"
-    {{ in_array($subject->id, (array) request('subject')) ? 'checked' : '' }}
->
+    <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
   </label>
 </div>
 

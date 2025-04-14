@@ -21,11 +21,16 @@ class UsersController extends Controller
         $gender = $request->sex;
         $role = $request->role;
         $subjects = $request->subject; // ← チェックボックスで選ばれた科目配列
+        // dd($request->subject);
+
+
+
 
         $userFactory = new SearchResultFactories();
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
         $subjects = Subjects::all();
         return view('authenticated.users.search', compact('users', 'subjects'));
+
     }
 
     public function userProfile($id){

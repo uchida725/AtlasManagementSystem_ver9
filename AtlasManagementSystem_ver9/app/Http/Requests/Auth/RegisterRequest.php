@@ -36,10 +36,9 @@ class RegisterRequest extends FormRequest
         'under_name_kana' => 'required|string|regex:/^[ァ-ヶー　]+$/u|max:30',
         'mail_address' => 'required|string|email:strict,dns|max:100|unique:users,mail_address',
         'sex' => 'required|in:1,2,3',
-        // 'old_year' => 'required|before:tomorrow',
+        // 'old_year' => 'required|date|after_or_equal:2000-01-01|before_or_equal:today',
         // 'old_month' => 'required',
         // 'old_day' => 'required',
-        // 'birth_day' => 'required|date|after_or_equal:2000-01-01|before_or_equal:today',
         'role' => 'required|in:1,2,3,4',
         'password' => 'required|min:8|max:30|confirmed',
         'password_confirmation' => 'required|min:8|max:30',
@@ -53,6 +52,8 @@ class RegisterRequest extends FormRequest
         $year = $this->input('old_year');
         $month = $this->input('old_month');
         $day = $this->input('old_day');
+
+        // dd($year, $month, $day); // ← ここで一時停止＆中身を確認できる！
 
         // 存在する日付かどうかチェック（2/31などNG）
         if (!checkdate((int)$month, (int)$day, (int)$year)) {

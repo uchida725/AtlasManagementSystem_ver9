@@ -2,6 +2,7 @@
 
 namespace App\Models\Posts;
 
+use App\Models\Categories\SubCategory;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model

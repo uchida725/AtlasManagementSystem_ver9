@@ -38,11 +38,9 @@
         <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
         <!-- {{-- サブカテゴリー一覧（クリックで絞り込み） --}} -->
     @foreach($category->subCategories as $sub)
-      <li style="margin-left: 20px;">
-        <a href="{{ route('post.show', ['sub_category_id' => $sub->id]) }}" class="text-dark">
-          {{ $sub->sub_category }}
-        </a>
-      </li>
+    <li>
+    <input type="submit" name="category_word" class="category_btn" value="{{ $sub->sub_category }}" form="postSearchRequest">
+    </li>
     @endforeach
         @endforeach
       </ul>

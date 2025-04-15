@@ -25,13 +25,22 @@ class PostsController extends Controller
             $posts = Post::with('user', 'postComments')
             ->where('post_title', 'like', '%'.$request->keyword.'%')
             ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
-        }else if($request->category_word){
-            $sub_category = $request->category_word;
-            $posts = Post::with('user', 'postComments')->get();
+// カテゴリ検索
+            }else if($request->category_word){
+    // サブカテゴリー名が一致する投稿だけ取得
+    $category = $request->category_word;
+    // dd($category);
+    $posts = Post::with('user', 'postComments')
+        ->whereHas('subCategories', fn($q) => $q->where('sub_category', $category))
+        ->get();
+
+
+// いいねした投稿
         }else if($request->like_posts){
             $likes = Auth::user()->likePostId()->get('like_post_id');
             $posts = Post::with('user', 'postComments')
             ->whereIn('id', $likes)->get();
+// 自分の投稿
         }else if($request->my_posts){
             $posts = Post::with('user', 'postComments')
             ->where('user_id', Auth::id())->get();

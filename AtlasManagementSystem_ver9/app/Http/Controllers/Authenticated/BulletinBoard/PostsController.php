@@ -31,7 +31,7 @@ class PostsController extends Controller
     $category = $request->category_word;
     // dd($category);
     $posts = Post::with('user', 'postComments')
-        ->whereHas('subCategories', fn($q) => $q->where('sub_category', $category))
+        ->whereHas('subCategories', fn($q) => $q->where('sub_categories.id', $category))
         ->get();
 
 
@@ -64,6 +64,10 @@ class PostsController extends Controller
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
+
+        // サブカテゴリーとの紐づけ！
+$post->subCategories()->attach($request->sub_category_id);
+
         return redirect()->route('post.show');
     }
 

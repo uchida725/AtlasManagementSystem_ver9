@@ -39,7 +39,7 @@
         <!-- {{-- サブカテゴリー一覧（クリックで絞り込み） --}} -->
     @foreach($category->subCategories as $sub)
     <li>
-    <input type="submit" name="sub_category_id" class="category_btn" value="{{ $sub->id }}" form="postSearchRequest">
+    <input type="submit" name="sub_category_id" class="category_btn" value="{{ $sub->sub_category }}" form="postSearchRequest">
     </li>
     @endforeach
         @endforeach

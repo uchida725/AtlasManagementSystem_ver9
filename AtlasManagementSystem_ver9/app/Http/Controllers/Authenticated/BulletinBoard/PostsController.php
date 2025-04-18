@@ -26,12 +26,13 @@ class PostsController extends Controller
             ->where('post_title', 'like', '%'.$request->keyword.'%')
             ->orWhere('post', 'like', '%'.$request->keyword.'%')->get();
 // カテゴリ検索
-            }else if($request->category_word){
+            }else if($request->category_id){
     // サブカテゴリー名が一致する投稿だけ取得
-    $category = $request->category_word;
+    $category = $request->category_id;
     // dd($category);
+
     $posts = Post::with('user', 'postComments')
-        ->whereHas('subCategories', fn($q) => $q->where('sub_categories.id', $category))
+        ->whereHas('subCategories', fn($q) => $q->where('sub_categories.sub_category', $category))
         ->get();
 
 
@@ -66,7 +67,10 @@ class PostsController extends Controller
         ]);
 
         // サブカテゴリーとの紐づけ！
-$post->subCategories()->attach($request->sub_category_id);
+if ($request->filled('sub_category_id')) {
+    $post->subCategories()->attach($request->sub_category_id);
+}
+
 
         return redirect()->route('post.show');
     }

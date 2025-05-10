@@ -41,4 +41,10 @@ class Post extends Model
         return $this->hasMany(Like::class, 'like_post_id');
     }
 
+    // コメントカウント数表示のためのリレーション
+    public function post_Comments()
+    {
+        return $this->hasMany(PostComment::class);
+    }
+
 }

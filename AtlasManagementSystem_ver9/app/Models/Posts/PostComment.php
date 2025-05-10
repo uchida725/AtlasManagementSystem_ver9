@@ -17,11 +17,16 @@ class PostComment extends Model
         'comment',
     ];
 
-    public function post(){
-        return $this->belongsTo('App\Models\Posts\Post');
-    }
+
 
     public function commentUser($user_id){
         return User::where('id', $user_id)->first();
     }
+
+    // コメント数表示のためのリレーション
+    public function post()
+{
+    return $this->belongsTo(Post::class);
+}
+
 }

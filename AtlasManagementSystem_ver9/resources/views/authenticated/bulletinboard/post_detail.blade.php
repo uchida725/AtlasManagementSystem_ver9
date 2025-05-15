@@ -6,10 +6,20 @@
         <div class="detail_inner_head">
           <div>
           </div>
-          <div>
-            <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
-          </div>
+          @auth
+            @if (Auth::id() === $post->user_id)
+              <div>
+                <!-- ✅ これが必要！JSにURLのひな形を渡す -->
+                <input type="hidden" id="delete-url-base" value="{{ route('post.delete', ['id' => 'POST_ID']) }}">
+
+                <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+                <button type="button" class="btn btn-danger delete-modal-open" data-post-id="{{ $post->id }}">
+                  削除
+                </button>
+              </div>
+            @endif
+          @endauth
+
         </div>
 
         <div class="contributor d-flex">
@@ -77,4 +87,40 @@
     </form>
   </div>
 </div>
+<div class="modal js-delete-modal">
+  <div class="modal__bg js-delete-modal-close"></div>
+  <div class="modal__content">
+    <p class="mb-3">この投稿を本当に削除しますか？</p>
+    <form id="deleteForm" method="GET">
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-secondary js-delete-modal-close">キャンセル</button>
+        <button type="submit" class="btn btn-danger ml-2">削除する</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  // モーダル開く
+  document.querySelectorAll('.delete-modal-open').forEach(button => {
+  button.addEventListener('click', function () {
+    const postId = this.getAttribute('data-post-id');
+    const baseUrl = document.getElementById('delete-url-base').value;
+    const finalUrl = baseUrl.replace('POST_ID', postId);
+
+    const form = document.getElementById('deleteForm');
+    form.setAttribute('action', finalUrl);
+    document.querySelector('.js-delete-modal').classList.add('is-show');
+  });
+});
+
+
+  // モーダル閉じる
+  document.querySelectorAll('.js-delete-modal-close').forEach(button => {
+    button.addEventListener('click', function () {
+      document.querySelector('.js-delete-modal').classList.remove('is-show');
+    });
+  });
+</script>
+
 </x-sidebar>

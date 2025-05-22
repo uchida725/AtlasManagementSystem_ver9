@@ -21,8 +21,19 @@
           @endauth
 
         </div>
+        @if (old('post_id') == $post->id)
+            @error('post_title')
+              <div class="text-danger">{{ $message }}</div>
+            @enderror
+          @endif
+        @if (old('post_id') == $post->id)
+          @error('post_body')
+            <div class="text-danger">{{ $message }}</div>
+          @enderror
+        @endif
 
         <div class="contributor d-flex">
+
           <p>
             <span>{{ $post->user->over_name }}</span>
             <span>{{ $post->user->under_name }}</span>

@@ -3,6 +3,7 @@ namespace App\Calendars\Admin;
 
 use Carbon\Carbon;
 use App\Models\Calendars\ReserveSettings;
+use Illuminate\Support\Facades\Auth;
 
 class CalendarWeekDay{
   protected $carbon;
@@ -25,26 +26,29 @@ class CalendarWeekDay{
 
   function dayPartCounts($ymd){
     $html = [];
-    $one_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '1')->first();
-    $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
-    $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
+
+    $user_id = Auth::id(); // 👈 ログインユーザーのIDを取得
 
     $html[] = '<div class="text-left">';
-    if($one_part){
-      $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+
+    if (ReserveSettings::where('setting_reserve', $ymd)->where('setting_part', '1')->exists()) {
+        $url = url("/calendar/{$user_id}/reserve/{$ymd}") . '?part=1';
+        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">1部</a></p>';
     }
-    if($two_part){
-      $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+
+    if (ReserveSettings::where('setting_reserve', $ymd)->where('setting_part', '2')->exists()) {
+        $url = url("/calendar/{$user_id}/reserve/{$ymd}") . '?part=2';
+        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">2部</a></p>';
     }
-    if($three_part){
-      $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+
+    if (ReserveSettings::where('setting_reserve', $ymd)->where('setting_part', '3')->exists()) {
+        $url = url("/calendar/{$user_id}/reserve/{$ymd}") . '?part=3';
+        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">3部</a></p>';
     }
+
     $html[] = '</div>';
-
     return implode("", $html);
-  }
-
-
+}
   function onePartFrame($day){
     $one_part_frame = ReserveSettings::where('setting_reserve', $day)->where('setting_part', '1')->first();
     if($one_part_frame){

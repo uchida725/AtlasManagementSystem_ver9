@@ -29,6 +29,19 @@ class CalendarsController extends Controller
         return view('authenticated.calendar.admin.reserve_setting', compact('calendar'));
     }
 
+    public function reserveDetailFromUser($user_id, $date, Request $request)
+{
+    $part = $request->query('part');
+
+    $reservePersons = ReserveSettings::with('users')
+        ->where('setting_reserve', $date)
+        ->where('setting_part', $part)
+        ->get();
+
+    return view('authenticated.calendar.admin.reserve_detail', compact('reservePersons', 'date', 'part'));
+}
+
+
     public function updateSettings(Request $request){
         $reserveDays = $request->input('reserve_day');
         foreach($reserveDays as $day => $parts){

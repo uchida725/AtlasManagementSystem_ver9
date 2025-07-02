@@ -25,9 +25,12 @@ class CalendarsController extends Controller
     }
 
     public function reserveSettings(){
-        $calendar = new CalendarSettingView(time());
-        return view('authenticated.calendar.admin.reserve_setting', compact('calendar'));
-    }
+    $calendar = new CalendarSettingView(time());
+    $reserveSettings = ReserveSettings::orderBy('setting_reserve', 'asc')->paginate(10); // ← ここを追加！
+
+    return view('authenticated.calendar.admin.reserve_setting', compact('calendar', 'reserveSettings'));
+}
+
 
     public function reserveDetailFromUser($user_id, $date, Request $request)
 {

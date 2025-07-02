@@ -4,6 +4,8 @@ namespace App\Calendars\Admin;
 use Carbon\Carbon;
 use App\Models\Calendars\ReserveSettings;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class CalendarWeekDay{
   protected $carbon;
@@ -24,6 +26,12 @@ class CalendarWeekDay{
     return $this->carbon->format("Y-m-d");
   }
 
+  public function getReserveCount($part)
+{
+    $reserve = ReserveSettings::where('setting_reserve', $this->everyDay())->where('setting_part', $part)->first();
+    return $reserve ? DB::table('reserve_setting_users')->where('reserve_setting_id', $reserve->id)->count() : 0;
+}
+
   function dayPartCounts($ymd){
     $html = [];
 
@@ -33,17 +41,20 @@ class CalendarWeekDay{
 
     if (ReserveSettings::where('setting_reserve', $ymd)->where('setting_part', '1')->exists()) {
         $url = url("/calendar/{$user_id}/reserve/{$ymd}") . '?part=1';
-        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">1部</a></p>';
+        $count1 = $this->getReserveCount(1);
+        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">1部</a>（'.$count1.'人予約中）</p>';
     }
 
     if (ReserveSettings::where('setting_reserve', $ymd)->where('setting_part', '2')->exists()) {
         $url = url("/calendar/{$user_id}/reserve/{$ymd}") . '?part=2';
-        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">2部</a></p>';
+        $count2 = $this->getReserveCount(2);
+        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">2部</a>（'.$count2.'人予約中）</p>';
     }
 
     if (ReserveSettings::where('setting_reserve', $ymd)->where('setting_part', '3')->exists()) {
         $url = url("/calendar/{$user_id}/reserve/{$ymd}") . '?part=3';
-        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">3部</a></p>';
+        $count3 = $this->getReserveCount(3);
+        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">3部</a>（'.$count3.'人予約中）</p>';
     }
 
     $html[] = '</div>';

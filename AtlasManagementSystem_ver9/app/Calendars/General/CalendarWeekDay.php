@@ -86,4 +86,13 @@ class CalendarWeekDay{
      return Auth::user()->reserveSettings->where('setting_reserve', $reserveDate);
    }
 
+
+    public function getSettingId($date, $part)
+  {
+      $setting = \App\Models\Calendars\ReserveSettings::where('setting_reserve', $date)
+                  ->where('setting_part', $part)
+                  ->first();
+      return $setting ? $setting->id : '';
+  }
+
 }

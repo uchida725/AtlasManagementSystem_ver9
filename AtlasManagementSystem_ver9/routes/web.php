@@ -43,6 +43,8 @@ Route::group(['middleware' => 'auth'], function(){
                 Route::get('calendar/{date}/{part}', [CalendarsController::class, 'reserveDetail'])->name('calendar.admin.detail');
                 Route::get('setting/{user_id}/admin', [CalendarsController::class, 'reserveSettings'])->name('calendar.admin.setting');
                 Route::post('setting/update/admin', [CalendarsController::class, 'updateSettings'])->name('calendar.admin.update');
+                Route::delete('/delete/calendar', [CalendarsController::class, 'cancel'])->name('calendar.cancel');
+
             });
         });
         Route::namespace('BulletinBoard')->group(function(){

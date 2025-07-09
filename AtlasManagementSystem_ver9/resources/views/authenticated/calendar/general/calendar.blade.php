@@ -13,4 +13,59 @@
     </div>
   </div>
 </div>
+
+<!-- ▼ キャンセル確認モーダル -->
+<div class="modal fade" id="cancelModal" tabindex="-1" aria-labelledby="cancelModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cancelModalLabel">キャンセル確認</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+      </div>
+      <!-- <div class="modal-body">
+        本当にキャンセルしてもよろしいですか？
+      </div> -->
+      <div class="modal-body">
+      <p>予約日：<span id="modalReserveDate"></span></p>
+      <p>時間：<span id="modalReservePart"></span></p>
+      <p>上記の予約をキャンセルしてもよろしいですか？</p>
+    </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">戻る</button>
+        <form method="POST" action="{{ route('calendar.cancel') }}" id="cancelForm">
+  @csrf
+  @method('DELETE')
+  <input type="hidden" name="delete_date" id="modalDeleteDate">
+  <button type="submit" class="btn btn-danger">キャンセルする</button>
+</form>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 </x-sidebar>
+
+<!-- ✅ BootstrapのJS（モーダル動作用） -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const cancelButtons = document.querySelectorAll('.cancel-modal-btn');
+    const modalInput = document.getElementById('modalDeleteDate');
+    const modalDate = document.getElementById('modalReserveDate');
+    const modalPart = document.getElementById('modalReservePart');
+
+    cancelButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        const date = this.getAttribute('data-reserve');
+        const part = this.getAttribute('data-part');
+
+        if (modalInput) modalInput.value = date;
+        if (modalDate) modalDate.textContent = date;
+        if (modalPart) modalPart.textContent = part;
+      });
+    });
+  });
+</script>

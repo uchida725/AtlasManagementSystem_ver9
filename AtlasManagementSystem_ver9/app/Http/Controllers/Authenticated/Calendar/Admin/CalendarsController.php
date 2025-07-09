@@ -79,10 +79,10 @@ class CalendarsController extends Controller
 
     if ($reserve) {
         $reserve->users()->detach($userId);
-        return redirect()->back()->with('success', '予約をキャンセルしました。');
+        return redirect()->back();
     }
 
-    return redirect()->back()->with('error', '予約が見つかりませんでした。');
+    return redirect()->back();
 }
 
 }

@@ -65,24 +65,29 @@ class CalendarsController extends Controller
 
 
 
-    public function cancel(Request $request)
+  public function cancel(Request $request)
 {
     $date = $request->input('delete_date');
     $userId = auth()->id();
 
-    // ユーザーの予約（中間テーブル）を削除
+    // ユーザーの予約（中間テーブル）を取得
     $reserve = \App\Models\Calendars\ReserveSettings::where('setting_reserve', $date)
-                ->whereHas('users', function ($q) use ($userId) {
-                    $q->where('users.id', $userId);
-                })
-                ->first();
+        ->whereHas('users', function ($q) use ($userId) {
+            $q->where('users.id', $userId);
+        })
+        ->first();
 
     if ($reserve) {
+        // 👇 予約枠（limit_users）を1つ増やす
+        $reserve->increment('limit_users');
+
+        // 👇 予約の紐づけ解除（キャンセル）
         $reserve->users()->detach($userId);
-        return redirect()->back();
+
+        return redirect()->back()->with('success', '予約をキャンセルしました');
     }
 
-    return redirect()->back();
+    return redirect()->back()->with('error', 'キャンセル対象が見つかりませんでした');
 }
 
 }

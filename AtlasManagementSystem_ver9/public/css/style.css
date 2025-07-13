@@ -353,3 +353,14 @@ li {
   max-width: 400px;
   width: 90%;
 }
+
+
+/* カレンダー */
+
+/* カレンダーグレー枠 */
+.bg-past {
+  background-color: #e0e0e0 !important;
+  /* 明るめのグレー */
+  color: #333;
+  /* テキストは少し濃い目に */
+}

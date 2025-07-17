@@ -90,13 +90,16 @@ class CalendarView{
           } else {
             $html[] = $day->selectPart($dayDate);
 
-            // ▼ 予約フォームの選択肢に対応する hidden を追加（空の状態で）
-            $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
-            $html[] = '<input type="hidden" name="getData[]" value="' . $day->everyDay() . '" form="reserveParts">';
+            // // ▼ 予約フォームの選択肢に対応する hidden を追加（空の状態で）
+            // $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+            // $html[] = '<input type="hidden" name="getData[]" value="' . $day->everyDay() . '" form="reserveParts">';
+
+          //  ↓これがif文の外に出ていたからエラーになってた
+            $html[] = $day->getDate();
           }
         }
 
-        $html[] = $day->getDate();
+
         $html[] = '</td>';
       }
 

@@ -36,7 +36,69 @@ li {
   font-weight: bold;
 }
 
-/* サイドバー */
+
+
+/* ーーー新規登録画面のレイアウトーーー */
+
+
+
+/* 生年月日部分 */
+.birth-select {
+  border: none;
+  border-bottom: 1px solid #007BFF;
+  background-color: transparent;
+  padding: 5px;
+  font-size: 14px;
+  outline: none;
+  width: 27%;
+  color: #333;
+  box-shadow: none;
+  /* 一部ブラウザで残る影も消す */
+}
+
+.birthdate-selects {
+  display: flex;
+  gap: 10px;
+  justify-content: start;
+  align-items: flex-end;
+  margin-top: 5px;
+}
+
+/* 性別エリア大枠 */
+.gender-area {
+  /* text-align: center; */
+  display: flex;
+  justify-content: space-around;
+}
+
+/* 性別のチェック部分 */
+.sex {
+  margin-left: 3%;
+}
+
+/* 性別の文字（男女その他） */
+.sex-title {
+  margin-right: 9%;
+  margin-top: 3%;
+}
+
+
+.role-area {
+  /* text-align: center; */
+  display: flex;
+  justify-content: space-around;
+}
+
+.role-text {
+  margin-right: 2%;
+}
+
+.admin_role {
+  margin-top: 3%;
+}
+
+
+/* ーーーーーサイドバー ーーーーー*/
 .sidebar {
   width: 200px;
   height: 100vh;
@@ -133,7 +195,20 @@ li {
   width: 60%;
 }
 
-/* 掲示板 */
+/* ーーーーー掲示板ーーーーー */
+
+
+.post-name {
+  color: #9E9E9E;
+  font-weight: 600;
+}
+
+.no-link-style {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 .sub_categories {
   display: none;
 }
@@ -156,11 +231,38 @@ li {
 .post_area {
   background: #FFF;
   border-radius: 10px;
+  position: relative;
+  padding-bottom: 40px;
+  /* 下に余白つけてバッジが重ならないように */
+}
+
+.post_category_area {
+  position: absolute;
+  bottom: 10px;
+  left: 15px;
+}
+
+.category_badge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 12px;
+  background-color: #03AAD2;
+  color: white;
+  border-radius: 8px;
+  margin-right: 5px;
 }
 
 .post_bottom_area {
   justify-content: space-between;
+  margin-left: 80%;
 }
+
+/* ハートとコメントマーク */
+.fa,
+.far {
+  color: #9E9E9E;
+}
+
 
 .like_btn,
 .un_like_btn {
@@ -176,6 +278,7 @@ li {
   font-size: 12px;
   color: red;
 }
+
 
 /* 掲示板 詳細画面 */
 .contributor {

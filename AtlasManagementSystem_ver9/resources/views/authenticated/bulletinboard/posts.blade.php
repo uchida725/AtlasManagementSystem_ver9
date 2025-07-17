@@ -4,8 +4,10 @@
     <p class="w-75 m-auto">投稿一覧</p>
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
-      <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
-      <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
+      <p class="post-name"><span >{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
+      <p><a href="{{ route('post.detail', ['id' => $post->id]) }}" class="no-link-style">{{ $post->post_title }}</a></p>
+
+
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
           <div class="mr-5">
@@ -21,7 +23,7 @@
             </p>
             @else
             <p class="m-0">
-              <i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i>
+              <i class="far fa-heart like_btn" post_id="{{ $post->id }}"></i>
               <span class="like_counts{{ $post->id }}">{{ $post->likes->count() }}</span>
             </p>
             @endif
@@ -29,6 +31,13 @@
           </div>
         </div>
       </div>
+      @if($post->subCategories->isNotEmpty())
+        <div class="post_category_area">
+          @foreach($post->subCategories as $sub)
+            <span class="category_badge">{{ $sub->sub_category }}</span>
+          @endforeach
+        </div>
+      @endif
     </div>
     @endforeach
   </div>

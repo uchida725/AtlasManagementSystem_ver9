@@ -4,6 +4,16 @@
     <div class="m-3 detail_container">
       <div class="p-3">
         <div class="detail_inner_head">
+        @if($post->subCategories && $post->subCategories->count())
+  <div>
+    @foreach($post->subCategories as $sub)
+      <span class="category_badge">{{ $sub->sub_category }}</span>
+    @endforeach
+  </div>
+@else
+  <div style="color:red;">サブカテゴリなし</div>
+@endif
+
           <div>
           </div>
           @auth

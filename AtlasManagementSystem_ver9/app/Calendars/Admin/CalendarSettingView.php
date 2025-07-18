@@ -17,6 +17,8 @@ class CalendarSettingView {
 
   public function render(){
     $html = [];
+    $html[] = '<p class="calendar-title">'.$this->getTitle().'</p>';
+
     $html[] = '<div class="calendar text-center">';
     $html[] = '<table class="table m-auto border adjust-table">';
     $html[] = '<thead>';
@@ -26,8 +28,8 @@ class CalendarSettingView {
     $html[] = '<th class="border">水</th>';
     $html[] = '<th class="border">木</th>';
     $html[] = '<th class="border">金</th>';
-    $html[] = '<th class="border">土</th>';
-    $html[] = '<th class="border">日</th>';
+    $html[] = '<th class="border day-sat">土</th>';
+    $html[] = '<th class="border day-sun">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -40,11 +42,25 @@ class CalendarSettingView {
         $startDay = $this->carbon->format("Y-m-01");
         $toDay = $this->carbon->format("Y-m-d");
 
-        if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="past-day border">';
-        }else{
-          $html[] = '<td class="border '.$day->getClassName().'">';
-        }
+if($day->everyDay()){
+    $currentMonth = $this->carbon->format('m'); // 現在の月
+    $dayMonth = Carbon::parse($day->everyDay())->format('m'); // その日の月
+
+    if($dayMonth !== $currentMonth){
+        // 当月以外
+        $html[] = '<td class="admin-outside-day border '.$day->getClassName().'">';
+    } elseif($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
+        // 当月の過去日
+        $html[] = '<td class="admin-past-day border '.$day->getClassName().'">';
+    } else {
+        // 当月の予約可能日
+        $html[] = '<td class="admin-available-day border '.$day->getClassName().'">';
+    }
+} else {
+    // 空白セル
+    $html[] = '<td class="day-blank border"></td>';
+}
+
 
         $html[] = $day->render();
         $html[] = '<div class="adjust-area">';

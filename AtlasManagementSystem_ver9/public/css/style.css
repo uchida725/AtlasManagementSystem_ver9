@@ -806,10 +806,78 @@ li {
 
 /* カレンダー */
 
-/* カレンダーグレー枠 */
+/* 予約カレンダーグレー枠 */
 .bg-past {
   background-color: #e0e0e0 !important;
   /* 明るめのグレー */
   color: #333;
   /* テキストは少し濃い目に */
+}
+
+
+
+/* ーーースクール予約枠登録画面ーー */
+
+/* 管理画面カレンダー：予約可能日（当月未来日） */
+.admin-available-day {
+  background-color: #FFF !important;
+  color: #333;
+}
+
+/* 予約可能日の土曜は青文字 */
+.admin-available-day.day-sat {
+  color: #0000FF !important;
+}
+
+/* 予約可能日の日曜は赤文字 */
+.admin-available-day.day-sun {
+  color: #FF0000 !important;
+}
+
+/* 管理画面カレンダー：過去日 */
+.admin-past-day {
+  background-color: #F5F5F5 !important;
+  /* 薄いグレー */
+  color: #333;
+}
+
+/* 過去日の土曜は青、日曜は赤 */
+.admin-past-day.day-sat {
+  color: #0000FF !important;
+}
+
+.admin-past-day.day-sun {
+  color: #FF0000 !important;
+}
+
+/* 管理画面カレンダー：当月以外 */
+.admin-outside-day {
+  background-color: #C0C0C0 !important;
+  /* 暗めのグレー */
+  color: #666;
+}
+
+/* カレンダー曜日ヘッダーの背景を白に */
+.adjust-table thead th {
+  background-color: #FFF !important;
+  color: #333;
+  /* 必要なら文字色も調整 */
+}
+
+
+.calendar-title {
+  font-size: 20px;
+  /* font-weight: bold; */
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* 曜日ヘッダーの土曜日を青に */
+.adjust-table thead th.day-sat {
+  color: #0000FF !important;
+}
+
+/* 曜日ヘッダーの日曜日を赤に */
+.adjust-table thead th.day-sun {
+  color: #FF0000 !important;
 }

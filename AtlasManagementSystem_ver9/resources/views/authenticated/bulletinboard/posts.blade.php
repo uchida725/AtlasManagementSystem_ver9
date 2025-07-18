@@ -1,7 +1,6 @@
 <x-sidebar>
 <div class="board_area w-100 border m-auto d-flex">
   <div class="post_view w-75 mt-5">
-    <p class="w-75 m-auto">投稿一覧</p>
     @foreach($posts as $post)
     <div class="post_area border w-75 m-auto p-3">
       <p class="post-name"><span >{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
@@ -42,33 +41,52 @@
     @endforeach
   </div>
   <!-- ここから右側の絞り込み検索部分 -->
-  <div class="other_area border w-25">
-    <div class="border m-4">
-      <div class=""><a href="{{ route('post.input') }}">投稿</a></div>
-      <div class="button_search_area">
-        <form action="{{ route('post.show') }}" method="get" id="postSearchRequest">
-          <input type="text" placeholder="キーワードを検索" name="keyword" form="postSearchRequest">
-        <input type="submit" value="検索" form="postSearchRequest">
+<div class="other_area w-30">
+  <div class="m-4">
+    <div class="mb-3"><a href="{{ route('post.input') }}" class="custom-main-btn">投稿</a></div>
 
-        </form>
+    <div class="button_search_area mb-3">
+      <form action="{{ route('post.show') }}" method="get" id="postSearchRequest" class="d-flex">
+        <input type="text" placeholder="キーワードを検索" name="keyword" class="form-control mr-2">
+        <input type="submit" value="検索" class="custom-main-search-btn">
+      </form>
+    </div>
 
-      </div>
-      <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
-      <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
-      <!-- カテゴリの検索機能 -->
-      <ul>
-        @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
-        <!-- {{-- サブカテゴリー一覧（クリックで絞り込み） --}} -->
-    @foreach($category->subCategories as $sub)
-  <form action="{{ route('post.show') }}" method="get" id="postSearchRequest">
-    <input type="hidden" name="sub_category_id" value="{{ $sub->id }}">
-    <button type="submit" class="category_btn">{{ $sub->sub_category }}</button>
-  </form>
-@endforeach
-        @endforeach
-      </ul>
+    <div class="d-flex justify-content-between mb-3">
+      <input type="submit" name="like_posts" class="category_btn like-btn" value="いいねした投稿" form="postSearchRequest">
+      <input type="submit" name="my_posts" class="category_btn my-btn" value="自分の投稿" form="postSearchRequest">
+    </div>
+
+    <p class="mb-1">カテゴリー検索</p>
+    <div class="accordion-area">
+      @foreach($categories as $category)
+        <div class="accordion-category mb-2">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <span>{{ $category->main_category }}</span>
+            <span class="arrow"></span>
+          </div>
+          <div class="accordion-body">
+            @foreach($category->subCategories as $sub)
+              <form action="{{ route('post.show') }}" method="get" class="mb-1">
+                <input type="hidden" name="sub_category_id" value="{{ $sub->id }}">
+                <button type="submit" class="sub-category-btn">{{ $sub->sub_category }}</button>
+              </form>
+            @endforeach
+          </div>
+        </div>
+      @endforeach
     </div>
   </div>
 </div>
+
 </x-sidebar>
+
+<script>
+  function toggleAccordion(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('.arrow');
+
+    body.classList.toggle('open');
+    arrow.classList.toggle('open');
+  }
+</script>

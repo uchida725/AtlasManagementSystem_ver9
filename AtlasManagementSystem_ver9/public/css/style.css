@@ -280,6 +280,158 @@ li {
 }
 
 
+/* ーーー掲示板投稿・検索・カテゴリ絞り込みーーー */
+
+.accordion-area {
+  width: 100%;
+  background-color: #ECF1F6;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.accordion-category {
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px; */
+  background-color: #ECF1F6;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  /* font-weight: bold; */
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  display: none;
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+
+.accordion-body.open {
+  display: block;
+}
+
+/* ボタン共通 */
+.sub-category-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  padding: 6px 0;
+  /* border-bottom: 1px solid #eee; */
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+}
+
+
+
+/* 共通ボタンレイアウト */
+.category_btn {
+  display: inline-block;
+  width: 48%;
+  padding: 8px 0;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 1%;
+}
+
+/* いいねボタンカラー */
+.category_btn.like-btn {
+  background-color: #F3A7C2;
+  color: white;
+  padding: 5%;
+  font-size: 13px;
+}
+
+/* 自分の投稿ボタンカラー */
+.category_btn.my-btn {
+  background-color: #F3CA7A;
+  color: white;
+  font-size: 13px;
+}
+
+
+.custom-main-btn {
+
+  background-color: #03AAD2;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+}
+
+.custom-main-search-btn {
+  background-color: #03AAD2;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  width: 60%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.other_area {
+  margin-top: 2%;
+  margin-right: 5%;
+  width: 30%;
+}
+
+/* キーワード検索フォームエリア全体 */
+.button_search_area input[type="text"] {
+  background-color: #ECF1F6;
+  padding: 10px;
+  /* border-radius: 8px; */
+}
+
+
+.arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #444;
+  border-bottom: 2px solid #444;
+  transform: rotate(-45deg);
+  /* 上向き */
+  transition: transform 0.3s ease;
+  margin-left: 5px;
+}
+
+/* 開いたときに下向きへ */
+.arrow.open {
+  transform: rotate(135deg);
+  /* 下向き */
+}
+
 /* 掲示板 詳細画面 */
 .contributor {
   font-size: 12px;
@@ -314,6 +466,20 @@ li {
   justify-content: space-between;
 }
 
+
+.btn-edit {
+  background-color: #007BFF;
+  color: #fff;
+  padding: 6px 15px;
+  padding-bottom: 8px;
+  /* font-weight: bold; */
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
 /* 掲示板 コメント */
 .comment_container {
   background: #FFF;
@@ -328,6 +494,11 @@ li {
 .comment_area textarea {
   height: 300px;
   resize: none;
+}
+
+.comment_area input[type="submit"] {
+  display: block;
+  margin-left: auto;
 }
 
 .comment_container span {

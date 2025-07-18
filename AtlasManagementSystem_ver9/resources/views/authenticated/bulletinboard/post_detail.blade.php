@@ -12,7 +12,13 @@
                 <!-- ✅ これが必要！JSにURLのひな形を渡す -->
                 <input type="hidden" id="delete-url-base" value="{{ route('post.delete', ['id' => 'POST_ID']) }}">
 
-                <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
+                <!-- 変更後（buttonに変更） -->
+                <button type="button" class="custom-btn btn-edit edit-modal-open"
+                  post_title="{{ $post->post_title }}"
+                  post_body="{{ $post->post }}"
+                  post_id="{{ $post->id }}">
+                  編集
+                </button>
                 <button type="button" class="btn btn-danger delete-modal-open" data-post-id="{{ $post->id }}">
                   削除
                 </button>

@@ -765,10 +765,21 @@ li {
 
 
 /* チェックボックス横並び */
+
+.subject_checkbox_area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 .subject_checkbox_area label {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   margin-right: 10px;
-  white-space: nowrap;
+}
+
+.check_box_subject {
+  margin-left: 3px;
 }
 
 /* 矢印アイコン */

@@ -23,18 +23,19 @@
           <span class="arrow-icon"></span>
         </span>
         <div class="subject_inner mt-2">
-          <form action="{{ route('user.edit') }}" method="post" class="subject_checkbox_area">
-            @foreach($subject_lists as $subject_list)
-            <label class="mr-3">
-              <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
-              {{ $subject_list->subject }}
-            </label>
-            @endforeach
-            <div class="mt-2">
-              <input type="submit" value="編集" class="btn btn-primary">
-              <input type="hidden" name="user_id" value="{{ $user->id }}">
-              {{ csrf_field() }}
-            </div>
+  <form action="{{ route('user.edit') }}" method="post" class="subject_checkbox_area d-flex align-items-center flex-wrap">
+    @foreach($subject_lists as $subject_list)
+    <label class="mr-3 mb-2">
+      {{ $subject_list->subject }}
+      <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}" class="check_box_subject">
+    </label>
+    @endforeach
+    <input type="submit" value="登録" class="btn btn-primary ml-2 mb-2">
+    <input type="hidden" name="user_id" value="{{ $user->id }}">
+    {{ csrf_field() }}
+  </form>
+</div>
+
           </form>
         </div>
         @endcan

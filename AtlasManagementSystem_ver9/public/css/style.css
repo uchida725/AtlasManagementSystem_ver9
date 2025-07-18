@@ -806,12 +806,67 @@ li {
 
 /* カレンダー */
 
+
+/* ーーー予約画面ーーー */
+
 /* 予約カレンダーグレー枠 */
 .bg-past {
-  background-color: #e0e0e0 !important;
+  background-color: #eee !important;
   /* 明るめのグレー */
   color: #333;
   /* テキストは少し濃い目に */
+}
+
+/* ただし受付終了文字には影響しない */
+.bg-past.day-sat p,
+.bg-past.day-sun p {
+  color: #333 !important;
+  /* 受付終了は通常色 */
+}
+
+.bg-other-month {
+  background-color: #ccc !important;
+  ;
+  /* 濃いめのグレー */
+}
+
+.bg-past.day-sat {
+  color: #0000FF !important;
+  /* 土曜は青に上書き */
+}
+
+.bg-past.day-sun {
+  color: #FF0000 !important;
+  /* 日曜は赤に上書き */
+}
+
+.table th,
+.table td {
+  /* border-left: 1px solid #ccc; */
+  /* 縦線 */
+  border: 1px solid #ccc;
+}
+
+.table {
+  border-collapse: collapse;
+  /* 線を重ならないように */
+}
+
+/* 土曜日・日曜日の数字カラー */
+.day-sat .day-number {
+  color: #0000FF !important;
+  /* 青 */
+}
+
+.day-sun .day-number {
+  color: #FF0000 !important;
+  /* 赤 */
+}
+
+/* 受付終了など <p> 内の文字は通常色 */
+.day-sat p,
+.day-sun p {
+  color: #333 !important;
 }
 
 

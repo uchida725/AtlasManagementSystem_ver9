@@ -26,8 +26,8 @@ class CalendarView{
     $html[] = '<th>水</th>';
     $html[] = '<th>木</th>';
     $html[] = '<th>金</th>';
-    $html[] = '<th>土</th>';
-    $html[] = '<th>日</th>';
+    $html[] = '<th class="day-sat">土</th>';
+    $html[] = '<th class="day-sun">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -45,9 +45,15 @@ class CalendarView{
         $isPast = $dayDate < $today;
         $isSameMonth = strpos($dayDate, $currentMonth) === 0;
 
+        // 曜日判定（0=日曜, 6=土曜）
+    $w = Carbon::parse($dayDate)->dayOfWeek;
+
         // 背景クラス
         $cellClass = 'calendar-td';
         if ($isPast) $cellClass .= ' bg-past';
+        if (!$isSameMonth) $cellClass .= ' bg-other-month';  // ここ追加
+        if ($w == 6) $cellClass .= ' day-sat'; // 土曜
+        if ($w == 0) $cellClass .= ' day-sun'; // 日曜
         $html[] = '<td class="'.$cellClass.'">';
         $html[] = $day->render();
 

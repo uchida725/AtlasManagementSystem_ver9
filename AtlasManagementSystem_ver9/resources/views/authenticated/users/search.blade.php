@@ -1,9 +1,9 @@
 <x-sidebar>
 <!-- <p>ユーザー検索</p> -->
-<div class="search_content w-100 border d-flex">
+<div class="search_content w-100 d-flex">
   <div class="reserve_users_area">
     @foreach($users as $user)
-    <div class="border one_person">
+    <div class="one_person">
       <div class="user_search_profile">
         <div>
         <span>ID : </span><span class="user_select">{{ $user->id }}</span>
@@ -57,29 +57,36 @@
     </div>
     @endforeach
   </div>
+
+
+
   <!-- ここから検索機能 -->
-  <div class="search_area w-25 border">
-    <div class="">
+  <div class="search_area w-25">
+    <div class="search_sidebar">
       <div>
-        <label class="search_label">検索</label>
-        <input type="text" class="free_word" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
+        <label class="search_label search_label_top">検索</label>
+        <input type="text" class="free_word engineer" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">
       </div>
       <div>
         <label class="search_label">カテゴリ</label>
-        <select form="userSearchRequest" name="category">
-          <option value="name">名前</option>
+        <select class="engineer" form="userSearchRequest" name="category">
+          <option  value="name">名前</option>
           <option value="id">社員ID</option>
         </select>
       </div>
       <div>
         <label class="search_label">並び替え</label>
-        <select name="updown" form="userSearchRequest">
+        <select class="engineer" name="updown" form="userSearchRequest">
           <option value="ASC">昇順</option>
           <option value="DESC">降順</option>
         </select>
       </div>
       <div class="">
-        <p class="m-0 search_conditions"><span>検索条件の追加</span></p>
+        <div class="search_conditions search-toggle" id="searchToggle">
+  <span class="search_more_title search_label">検索条件の追加</span>
+  <span class="arrow"></span>
+</div>
+
         <div class="search_conditions_inner">
           <div>
             <label class="search_label">性別</label>
@@ -97,28 +104,25 @@
               <option value="4" class="">生徒</option>
             </select>
           </div>
-          <div>
-            <label class="search_label">選択科目</label>
-          </div>
-            <!-- <div>国語<input type="checkbox" name="subject[]" value="1"></div>
-            <div>数学<input type="checkbox" name="subject[]" value="2"></div>
-            <div>英語<input type="checkbox" name="subject[]" value="3"></div> -->
-            @foreach ($subjects as $subject)
-  <div>
-  <label>
-    {{ $subject->subject }}
-    <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
-  </label>
-</div>
+          <label class="search_label">選択科目</label>
+          <div class="subject-container">
+             @foreach ($subjects as $subject)
+              <div>
+              <label>
+                {{ $subject->subject }}
+                <input type="checkbox" name="subject[]" value="{{ $subject->id }}" form="userSearchRequest">
+              </label>
+            </div>
 
-@endforeach
+            @endforeach
           </div>
           </div>
           </div>
-          <div>
+          </div>
+          <div class="search-buttons">
         <input type="submit" name="search_btn" value="検索" form="userSearchRequest">
       </div>
-      <div>
+      <div class="search-buttons">
         <input type="reset" value="リセット" form="userSearchRequest">
       </div>
         </div>
@@ -129,3 +133,10 @@
   </div>
 </div>
 </x-sidebar>
+
+<script>
+  document.getElementById('searchToggle').addEventListener('click', function() {
+  this.classList.toggle('open');
+});
+
+</script>

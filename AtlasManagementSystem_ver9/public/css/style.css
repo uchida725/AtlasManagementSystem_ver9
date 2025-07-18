@@ -539,6 +539,11 @@ li {
 }
 
 /* ユーザー検索 */
+
+.search_sidebar {
+  padding: 20px;
+}
+
 .reserve_users_area {
   display: flex;
   flex-wrap: wrap;
@@ -566,11 +571,17 @@ li {
 
 .search_conditions span {
   cursor: pointer;
+  margin-top: 10%;
 }
 
 .search_conditions_inner {
-  /* display: none; */
-  background: #FFF;
+  display: none;
+  background: #ECF1F6;
+}
+
+/* 検索条件の追加文 */
+.search_more_title {
+  font-weight: normal;
 }
 
 .subject_edit_btn {
@@ -596,12 +607,106 @@ li {
 
 .search_label {
   display: block;
+  margin-top: 7%;
+  color: steelblue;
+}
+
+.search_label_top {
+  font-size: 20px;
 }
 
 
 .subject_type {
   display: block;
 }
+
+
+.engineer {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  border: none;
+  padding: 3%;
+}
+
+
+.subject-container {
+  display: flex;
+  /* 横並びにする */
+  gap: 10px;
+  /* チェックボックス間の余白 */
+}
+
+.subject-container label {
+  display: flex;
+  align-items: center;
+}
+
+
+/* 検索の追加の矢印部分 */
+.search-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px 0;
+  border-bottom: 1px solid #999;
+  width: 85%;
+  /* 下線 */
+  font-weight: bold;
+}
+
+/* 矢印部分 */
+.search-toggle .arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #444;
+  border-bottom: 2px solid #444;
+  transform: rotate(-45deg);
+  /* 初期は上向き */
+  transition: transform 0.3s ease;
+}
+
+/* 開いたときに下向きに回転 */
+.search-toggle.open .arrow {
+  transform: rotate(135deg);
+}
+
+
+/* ボタン全体を中央に */
+.search-buttons {
+  text-align: center;
+  margin-top: 20px;
+  margin-right: 50px;
+}
+
+
+
+/* 検索ボタン */
+.search-buttons input[type="submit"] {
+  background-color: #03AAD2;
+  color: #fff;
+  border: none;
+  padding: 10px 90px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  /* font-weight: bold; */
+}
+
+/* リセットボタン */
+.search-buttons input[type="reset"] {
+  background: none;
+  border: none;
+  color: #03AAD2;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+
 
 .modal {
   display: none;
@@ -624,9 +729,14 @@ li {
   background: #fff;
   padding: 30px;
   border-radius: 10px;
-  max-width: 400px;
+  max-width: 60%;
   width: 90%;
 }
+
+
+
+
+
 
 
 /* カレンダー */

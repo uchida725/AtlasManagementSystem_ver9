@@ -956,3 +956,27 @@ td.available-day.border {
 .outside-month {
   background-color: #ccc;
 }
+
+/* 1部2部3部の部分の色 */
+.day_part a {
+  color: #03AAD2;
+  /* スクショのような青 */
+  text-decoration: none;
+  /* 下線なし */
+  /* font-weight: bold; */
+}
+
+
+/* 土曜日：過去日含めて常に青 */
+.past-day.day-sat p.day,
+.available-day.day-sat p.day,
+.outside-month.day-sat p.day {
+  color: #0000FF !important;
+}
+
+/* 日曜日：過去日含めて常に赤 */
+.past-day.day-sun p.day,
+.available-day.day-sun p.day,
+.outside-month.day-sun p.day {
+  color: #FF0000 !important;
+}

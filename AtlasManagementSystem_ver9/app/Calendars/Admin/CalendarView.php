@@ -25,8 +25,8 @@ class CalendarView{
     $html[] = '<th class="border">水</th>';
     $html[] = '<th class="border">木</th>';
     $html[] = '<th class="border">金</th>';
-    $html[] = '<th class="border">土</th>';
-    $html[] = '<th class="border">日</th>';
+    $html[] = '<th class="day-sat border">土</th>';
+    $html[] = '<th class="day-sun border">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -45,7 +45,8 @@ $dayMonth = date("Y-m", strtotime($day->everyDay())); // Carbon::parse()を使�
 if ($dayMonth !== $currentMonth) {
     $html[] = '<td class="outside-month border">';
 } elseif ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) {
-    $html[] = '<td class="past-day border">';
+    $html[] = '<td class="past-day border '.$day->getClassName().'">';
+
 } else {
     $html[] = '<td class="available-day border '.$day->getClassName().'">';
 }

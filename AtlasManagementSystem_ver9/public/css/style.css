@@ -549,7 +549,7 @@ li {
   flex-wrap: wrap;
   width: 800px;
   margin: 10px auto;
-  height: 60vh;
+  /* height: 60vh; */
   overflow: scroll;
   /* padding: 10px; */
   background: #ECF1F6;
@@ -563,10 +563,20 @@ li {
 .one_person {
   width: 180px;
   height: 200px;
-  margin: 0 1% 0 1%;
+  margin: 2% 1% 0 1%;
   background: #FFF;
   border-radius: 10px;
   box-shadow: 3px 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+.reserve_users_area {
+  max-height: 700px;
+  /* 必要に応じて高さを調整 */
+  overflow-y: auto;
+  /* 縦スクロールを有効化 */
+  padding-right: 5px;
+  /* スクロールバーで文字が隠れないように調整 */
 }
 
 .search_conditions span {

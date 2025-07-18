@@ -40,21 +40,31 @@ class CalendarWeekDay{
     $html[] = '<div class="text-left">';
 
     if (ReserveSettings::where('setting_reserve', $ymd)->where('setting_part', '1')->exists()) {
-        $url = url("/calendar/{$user_id}/reserve/{$ymd}") . '?part=1';
-        $count1 = $this->getReserveCount(1);
-        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">1部</a>'.$count1.'</p>';
-    }
+    $url = url("/calendar/{$user_id}/reserve/{$ymd}") . '?part=1';
+    $count1 = $this->getReserveCount(1);
+    $html[] = '<p class="day_part pt-1">'
+            . '<a href="' . $url . '">1部</a>'
+            . '<span class="reserve-count">'.$count1.'</span>'
+            . '</p>';
+}
+
 
     if (ReserveSettings::where('setting_reserve', $ymd)->where('setting_part', '2')->exists()) {
         $url = url("/calendar/{$user_id}/reserve/{$ymd}") . '?part=2';
         $count2 = $this->getReserveCount(2);
-        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">2部</a>'.$count2.'</p>';
+        $html[] = '<p class="day_part pt-1">'
+            . '<a href="' . $url . '">2部</a>'
+            . '<span class="reserve-count">'.$count1.'</span>'
+            . '</p>';
     }
 
     if (ReserveSettings::where('setting_reserve', $ymd)->where('setting_part', '3')->exists()) {
         $url = url("/calendar/{$user_id}/reserve/{$ymd}") . '?part=3';
         $count3 = $this->getReserveCount(3);
-        $html[] = '<p class="day_part m-0 pt-1"><a href="' . $url . '">3部</a>'.$count3.'</p>';
+        $html[] = '<p class="day_part pt-1">'
+            . '<a href="' . $url . '">3部</a>'
+            . '<span class="reserve-count">'.$count1.'</span>'
+            . '</p>';
     }
 
     $html[] = '</div>';

@@ -943,6 +943,10 @@ li {
 
 /* 予約確認画面 */
 
+.school_container {
+  background-color: #fff;
+}
+
 .title_day {
   text-align: center;
   font-size: 20px;
@@ -979,4 +983,16 @@ td.available-day.border {
 .available-day.day-sun p.day,
 .outside-month.day-sun p.day {
   color: #FF0000 !important;
+}
+
+
+.day_part {
+  margin-left: 5%;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+/* カウント部分配置 */
+.reserve-count {
+  margin-left: 35%;
 }

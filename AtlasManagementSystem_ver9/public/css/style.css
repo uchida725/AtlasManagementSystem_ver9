@@ -570,6 +570,7 @@ li {
 }
 
 
+/* ユーザー一覧のスクロール */
 .reserve_users_area {
   max-height: 700px;
   /* 必要に応じて高さを調整 */
@@ -744,7 +745,50 @@ li {
 }
 
 
+/* ーーーユーザープロフィール詳細ーーー */
 
+/* トップの題名部分 */
+.top_area_title {
+  position: left;
+  font-size: 18px;
+  padding: 13px;
+}
+
+.subject_edit {
+  margin-top: 2%;
+}
+
+.subject_edit_btn {
+  color: #03AAD2;
+  font-size: 15px;
+}
+
+
+/* チェックボックス横並び */
+.subject_checkbox_area label {
+  display: inline-block;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+/* 矢印アイコン */
+.arrow-icon {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-left: 2px solid #03AAD2;
+  border-bottom: 2px solid #03AAD2;
+  transform: rotate(-45deg);
+  /* 下向き */
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+
+}
+
+/* 開いた状態は上向き ∧ */
+.arrow-icon.open {
+  transform: rotate(135deg);
+}
 
 
 

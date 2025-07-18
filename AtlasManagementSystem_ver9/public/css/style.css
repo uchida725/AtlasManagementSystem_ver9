@@ -807,6 +807,9 @@ li {
 /* カレンダー */
 
 
+
+
+
 /* ーーー予約画面ーーー */
 
 /* 予約カレンダーグレー枠 */
@@ -935,4 +938,21 @@ li {
 /* 曜日ヘッダーの日曜日を赤に */
 .adjust-table thead th.day-sun {
   color: #FF0000 !important;
+}
+
+
+/* 予約確認画面 */
+
+.title_day {
+  text-align: center;
+  font-size: 20px;
+}
+
+
+td.available-day.border {
+  background-color: #fff;
+}
+
+.outside-month {
+  background-color: #ccc;
 }

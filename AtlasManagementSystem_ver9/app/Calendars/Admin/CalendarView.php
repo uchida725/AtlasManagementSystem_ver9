@@ -34,28 +34,37 @@ class CalendarView{
     $weeks = $this->getWeeks();
 
     foreach($weeks as $week){
-      $html[] = '<tr class="'.$week->getClassName().'">';
-      $days = $week->getDays();
-      foreach($days as $day){
-        $startDay = $this->carbon->format("Y-m-01");
-        $toDay = $this->carbon->format("Y-m-d");
-        if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="past-day border">';
-        }else{
-          $html[] = '<td class="border '.$day->getClassName().'">';
-        }
-        $html[] = $day->render();
-        $html[] = $day->dayPartCounts($day->everyDay());
-        $html[] = '</td>';
-      }
-      $html[] = '</tr>';
+        $html[] = '<tr class="'.$week->getClassName().'">';
+        $days = $week->getDays();
+        foreach($days as $day){
+    $startDay = $this->carbon->format("Y-m-01");  // 当月1日
+    $toDay = $this->carbon->format("Y-m-d");      // 今日
+    $currentMonth = $this->carbon->format("Y-m"); // 例: 2025-07
+$dayMonth = date("Y-m", strtotime($day->everyDay())); // Carbon::parse()を使わない
+
+if ($dayMonth !== $currentMonth) {
+    $html[] = '<td class="outside-month border">';
+} elseif ($startDay <= $day->everyDay() && $toDay > $day->everyDay()) {
+    $html[] = '<td class="past-day border">';
+} else {
+    $html[] = '<td class="available-day border '.$day->getClassName().'">';
+}
+
+
+    $html[] = $day->render();
+    $html[] = $day->dayPartCounts($day->everyDay());
+    $html[] = '</td>';
+}
+
+        $html[] = '</tr>';
     }
+
     $html[] = '</tbody>';
     $html[] = '</table>';
     $html[] = '</div>';
 
     return implode("", $html);
-  }
+}
 
   protected function getWeeks(){
     $weeks = [];

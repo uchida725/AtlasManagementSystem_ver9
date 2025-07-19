@@ -876,6 +876,64 @@ li {
 
 /* ーーースクール予約枠登録画面ーー */
 
+.calendar-card {
+  background: #fff;
+  /* 白い背景 */
+  border-radius: 10px;
+  /* 角丸 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  /* 影 */
+  padding: 30px;
+  /* 内側余白 */
+  width: 90%;
+  /* 横幅 */
+  max-width: 1100px;
+  /* 最大横幅 */
+  margin: auto;
+  /* 中央寄せ */
+  margin-top: 5%;
+}
+
+.calendar-card table {
+  margin: 0;
+  /* テーブルの余白をなくす */
+  width: 100%;
+  /* テーブル全体をカード幅いっぱいに */
+  table-layout: fixed;
+  /* 固定レイアウトでセル幅均等化 */
+}
+
+.calendar-card td,
+.calendar-card th {
+  padding: 4px 6px;
+  /* セルの上下左右の余白を減らす */
+  line-height: 1.2;
+  /* 行間を詰める */
+}
+
+.calendar-card p {
+  margin: 0 0 2px 0;
+  /* pタグの余白を小さく */
+}
+
+.calendar-card input[type="text"] {
+  height: 24px;
+  /* 入力ボックスの高さを小さく */
+  padding: 2px 4px;
+  /* 内側余白を減らす */
+  font-size: 12px;
+  /* フォントサイズを小さく */
+  width: 40px;
+}
+
+
+/* 登録ボタン位置 */
+.school-admin {
+  margin-top: 3%;
+}
+
+
+
 .day-sat-s,
 .day-sat-s .day-number {
   color: #0000FF !important;

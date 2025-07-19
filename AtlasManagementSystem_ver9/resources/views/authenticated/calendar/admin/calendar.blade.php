@@ -1,8 +1,10 @@
 <x-sidebar>
 <div class="w-75 m-auto">
-  <div class="w-100">
-    <p class="title_day">{{ $calendar->getTitle() }}</p>
-    <p>{!! $calendar->render() !!}</p>
+  <div class="calendar-card">
+    <p class="title_day text-center mb-4">{{ $calendar->getTitle() }}</p>
+    <div>
+      {!! $calendar->render() !!}
+    </div>
   </div>
 </div>
 </x-sidebar>

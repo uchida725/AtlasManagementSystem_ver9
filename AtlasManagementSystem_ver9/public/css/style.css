@@ -1095,3 +1095,9 @@ td.available-day.border {
   color: #333;
   /* 文字色は必要に応じて */
 }
+
+/* 土日だけ文字色を固定（黒） */
+.day-sat .reserve-count,
+.day-sun .reserve-count {
+  color: #000 !important;
+}

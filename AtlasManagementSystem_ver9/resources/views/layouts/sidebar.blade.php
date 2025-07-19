@@ -20,19 +20,33 @@
     <body class="all_content">
         <div class="d-flex">
             <div class="sidebar">
-                <p class="side_title"><img src="../image/home.png"width="20" height="20"><a href="{{ route('top.show') }}">マイページ</a></p>
-                <p class="side_title"><img src="../image/logout.png"width="20" height="20"><a href="/logout">ログアウト</a></p>
-                <p class="side_title"><img src="../image/calendar.png"width="20" height="20"><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+                <p class="side_title">
+                    <img src="{{ asset('image/home.png') }}"width="20" height="20">
+                    <a href="{{ route('top.show') }}">マイページ</a>
+                </p>
+                <p class="side_title">
+                    <img src="{{ asset('image/logout.png') }}"width="20" height="20">
+                    <a href="/logout">ログアウト</a>
+                </p>
+                <p class="side_title">
+                    <img src="{{ asset('image/calendar.png') }}"width="20" height="20">
+                    <a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a>
+                </p>
                 <!-- サイドバーの項目の一部を講師アカウントのみ表示されるようにする↓ -->
                 @php
                 $user = Auth::user();
                 @endphp
                 @if ($user && in_array($user->role, [1, 2, 3]))
-                <p class="side_title"><img src="../image/check.png"width="20" height="20"><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a></p>
-                <p class="side_title"><img src="../image/pen.png"width="20" height="20"><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+                <p class="side_title">
+                    <img src="{{ asset('image/comment.png') }}"width="20" height="20">
+                    <a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a>
+                </p>
+                <p class="side_title">
+                    <img src="{{ asset('image/pen.png') }}"width="20" height="20">
+                    <a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
                 @endif
-                <p class="side_title"><img src="../image/comment.png"width="20" height="20"><a href="{{ route('post.show') }}">掲示板</a></p>
-                <p class="side_title"><img src="../image/user.png"width="20" height="20"><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+                <p class="side_title"><img src="{{ asset('image/comment.png') }}"width="20" height="20"><a href="{{ route('post.show') }}">掲示板</a></p>
+                <p class="side_title"><img src="{{ asset('image/user.png') }}"width="20" height="20"><a href="{{ route('user.show') }}">ユーザー検索</a></p>
             </div>
             <div class="main-container">
                 {{ $slot }}

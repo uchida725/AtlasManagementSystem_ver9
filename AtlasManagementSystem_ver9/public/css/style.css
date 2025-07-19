@@ -1018,8 +1018,9 @@ li {
 .calendar-title {
   font-size: 20px;
   /* font-weight: bold; */
-  margin-bottom: 10px;
+  /* margin-bottom: 15px; */
   text-align: center;
+  padding-bottom: 10px;
 }
 
 /* 曜日ヘッダーの土曜日を青に */
@@ -1100,4 +1101,41 @@ td.available-day.border {
 .day-sat .reserve-count,
 .day-sun .reserve-count {
   color: #000 !important;
+}
+
+
+/* ーーーー予約詳細画面ーーーー */
+
+.reserve-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.reserve-box {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+}
+
+.reserve-table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+
+.reserve-table th {
+  background-color: #03AAD2;
+  color: white;
+  padding: 10px;
+}
+
+.reserve-table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* 偶数行に背景色 */
+.reserve-table tr:nth-child(even) td {
+  background-color: #eaf7fb;
 }

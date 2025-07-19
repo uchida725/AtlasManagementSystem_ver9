@@ -1,12 +1,15 @@
 <x-sidebar>
 <div class="vh-100 d-flex" style="align-items:center; justify-content:center;">
-  <div class="w-50 m-auto h-75">
+  <div class="w-75 m-auto h-75">
 
-    {{-- ★ 該当日時を表示 --}}
-    <p><span>{{ $date }}日</span><span class="ml-3">{{ $part }}部</span></p>
+    {{-- ★ 年月日＋部を表示 --}}
+    <p class="reserve-title text-left">
+      <span>{{ \Carbon\Carbon::parse($date)->format('Y年n月j日') }}</span>
+      <span class="ml-3">{{ $part }}部</span>
+    </p>
 
-    <div class="h-75 border">
-      <table class="w-100">
+    <div class="border reserve-box">
+      <table class="w-100 reserve-table">
         <tr class="text-center">
           <th class="w-25">ID</th>
           <th class="w-25">名前</th>
@@ -23,7 +26,6 @@
             </tr>
           @endforeach
         @endforeach
-
       </table>
     </div>
   </div>

@@ -808,8 +808,6 @@ li {
 
 
 
-
-
 /* ーーー予約画面ーーー */
 
 /* 予約カレンダーグレー枠 */
@@ -878,20 +876,15 @@ li {
 
 .calendar-card {
   background: #fff;
-  /* 白い背景 */
   border-radius: 10px;
-  /* 角丸 */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  /* 影 */
-  padding: 30px;
-  /* 内側余白 */
-  width: 90%;
-  /* 横幅 */
+  padding: 20px;
+  /* 縦方向を30px → 40pxに増やす */
+  width: 100%;
+  /* 横幅を95%に（デフォルトは90%くらい） */
   max-width: 1100px;
-  /* 最大横幅 */
-  margin: auto;
-  /* 中央寄せ */
-  margin-top: 5%;
+  /* 最大幅を広げる（デフォルト900px → 1200px） */
+  margin: 20px auto;
 }
 
 .calendar-card table {
@@ -905,10 +898,10 @@ li {
 
 .calendar-card td,
 .calendar-card th {
-  padding: 4px 6px;
-  /* セルの上下左右の余白を減らす */
-  line-height: 1.2;
-  /* 行間を詰める */
+  padding: 8px 6px;
+  /* 4px → 8pxに増やす */
+  line-height: 1.4;
+  /* 行間も少し広げる */
 }
 
 .calendar-card p {
@@ -1033,6 +1026,9 @@ li {
   color: #FF0000 !important;
 }
 
+.adjust-table {
+  padding: 50px;
+}
 
 /* 予約確認画面 */
 

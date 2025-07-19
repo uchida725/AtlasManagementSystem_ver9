@@ -28,8 +28,8 @@ class CalendarSettingView {
     $html[] = '<th class="border">水</th>';
     $html[] = '<th class="border">木</th>';
     $html[] = '<th class="border">金</th>';
-    $html[] = '<th class="border day-sat">土</th>';
-    $html[] = '<th class="border day-sun">日</th>';
+    $html[] = '<th class="border day-sat-s">土</th>';
+    $html[] = '<th class="border day-sun-s">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';

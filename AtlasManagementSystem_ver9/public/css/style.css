@@ -876,6 +876,40 @@ li {
 
 /* ーーースクール予約枠登録画面ーー */
 
+.day-sat-s,
+.day-sat-s .day-number {
+  color: #0000FF !important;
+}
+
+.day-sun-s,
+.day-sun-s .day-number {
+  color: #FF0000 !important;
+}
+
+/* 土曜日の日付を青 */
+.day-sat p,
+.day-sat span,
+.day-sat .day-number {
+  color: #0000FF !important;
+}
+
+/* 日曜日の日付を赤 */
+.day-sun p,
+.day-sun span,
+.day-sun .day-number {
+  color: #FF0000 !important;
+}
+
+/* 土曜日の1部2部3部 */
+.day-sat .adjust-area p {
+  color: #0000FF !important;
+}
+
+/* 日曜日の1部2部3部 */
+.day-sun .adjust-area p {
+  color: #FF0000 !important;
+}
+
 /* 管理画面カレンダー：予約可能日（当月未来日） */
 .admin-available-day {
   background-color: #FFF !important;
@@ -995,4 +1029,11 @@ td.available-day.border {
 /* カウント部分配置 */
 .reserve-count {
   margin-left: 35%;
+}
+
+/* 曜日のところの背景 */
+.table thead th {
+  background-color: #fff !important;
+  color: #333;
+  /* 文字色は必要に応じて */
 }

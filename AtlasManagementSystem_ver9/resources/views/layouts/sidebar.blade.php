@@ -38,7 +38,7 @@
                 @endphp
                 @if ($user && in_array($user->role, [1, 2, 3]))
                 <p class="side_title">
-                    <img src="{{ asset('image/comment.png') }}"width="20" height="20">
+                    <img src="{{ asset('image/check.png') }}"width="20" height="20">
                     <a href="{{ route('calendar.admin.show',['user_id' => Auth::id()]) }}">スクール予約確認</a>
                 </p>
                 <p class="side_title">

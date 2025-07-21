@@ -828,6 +828,10 @@ li {
 
 /* ーーー予約画面ーーー */
 
+.reserve-btn {
+  margin-top: 2%;
+}
+
 /* 予約カレンダーグレー枠 */
 .bg-past {
   background-color: #eee !important;
@@ -864,6 +868,7 @@ li {
   /* border-left: 1px solid #ccc; */
   /* 縦線 */
   border: 1px solid #ccc;
+
 }
 
 .table {
@@ -1049,6 +1054,28 @@ li {
 }
 
 /* 予約確認画面 */
+
+
+.calendar table {
+  width: 90%;
+  /* 全体の幅を縮小 */
+  font-size: 12px;
+  /* 文字サイズを少し小さく */
+  margin: 0 auto;
+  /* 中央寄せ */
+}
+
+.calendar th,
+.calendar td {
+  padding: 5px 4px;
+  /* セルの上下・左右余白を縮小 */
+}
+
+.calendar .day {
+  font-size: 12px;
+  /* 日付の文字を小さめに */
+}
+
 
 .school_container {
   background-color: #fff;

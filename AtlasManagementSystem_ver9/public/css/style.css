@@ -40,7 +40,24 @@ li {
 
 /* ーーー新規登録画面のレイアウトーーー */
 
+.top_box {
+  width: 370px;
+}
 
+.form-position {
+  margin-left: 2%;
+
+}
+
+/* .border-bottom .border-primary {
+  align-items: center;
+} */
+
+/* 下線部分 */
+.form-line {
+  text-align: center;
+  margin-left: 2%;
+}
 
 /* 生年月日部分 */
 .birth-select {
@@ -101,7 +118,8 @@ li {
 /* ーーーーーサイドバー ーーーーー*/
 .sidebar {
   width: 200px;
-  height: 100vh;
+  min-height: 100vh;
+  /* 最低でも画面全体の高さ */
   background-color: #03AAD2;
   font-weight: bold;
 }
@@ -562,7 +580,7 @@ li {
 
 .one_person {
   width: 180px;
-  height: 200px;
+  height: 220px;
   margin: 2% 1% 0 1%;
   background: #FFF;
   border-radius: 10px;

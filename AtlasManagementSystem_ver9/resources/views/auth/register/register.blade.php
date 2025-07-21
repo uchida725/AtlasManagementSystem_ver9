@@ -1,7 +1,7 @@
 <x-guest-layout>
   <form action="{{ route('registerPost') }}" method="POST">
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
-      <div class="top_box w-25 vh-75 border p-3">
+      <div class="top_box vh-75 border p-3">
         @if ($errors->has('over_name'))
          <div class="text-danger">
            {{ $errors->first('over_name') }}
@@ -13,16 +13,16 @@
             </div>
           @endif
         <div class="register_form">
-          <div class="d-flex mt-3" style="justify-content:space-between">
-            <div class="" style="width:140px">
+          <div class="form-position d-flex mt-3" style="justify-content:space-between">
+            <div class="" style="width:130px">
               <label class="d-block m-0" style="font-size:13px; font-weight: bold;">姓</label>
-              <div class="border-bottom border-primary" style="width:140px;">
+              <div class="form-line border-bottom border-primary" style="width:120px;">
                 <input type="text" style="width:140px;" class="border-0 over_name" name="over_name">
               </div>
             </div>
             <div class="" style="width:140px">
               <label class=" d-block m-0" style="font-size:13px; font-weight: bold;">名</label>
-              <div class="border-bottom border-primary" style="width:140px;">
+              <div class="form-line border-bottom border-primary" style="width:120px;">
                 <input type="text" style="width:140px;" class="border-0 under_name" name="under_name">
               </div>
             </div>
@@ -37,34 +37,34 @@
         {{ $errors->first('under_name_kana') }}
             </div>
              @endif
-          <div class="d-flex mt-3" style="justify-content:space-between">
+          <div class="form-position d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px; font-weight: bold;">セイ</label>
-              <div class="border-bottom border-primary" style="width:140px;">
+              <div class="form-line border-bottom border-primary" style="width:120px;">
                 <input type="text" style="width:140px;" class="border-0 over_name_kana" name="over_name_kana">
               </div>
             </div>
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px; font-weight: bold;">メイ</label>
-              <div class="border-bottom border-primary" style="width:140px;">
+              <div class="form-line border-bottom border-primary" style="width:120px;">
                 <input type="text" style="width:140px;" class="border-0 under_name_kana" name="under_name_kana">
               </div>
             </div>
           </div>
-          <div class="mt-3">
+          <div class="form-position mt-3">
             @if ($errors->has('mail_address'))
               <div class="text-danger">
                 {{ $errors->first('mail_address') }}
               </div>
             @endif
             <label class="m-0 d-block" style="font-size:13px; font-weight: bold;">メールアドレス</label>
-            <div class="border-bottom border-primary">
+            <div class="form-line border-bottom border-primary" style="width:300px;">
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
             </div>
           </div>
 
         </div>
-        <div class="mt-3 gender-area">
+        <div class="form-position mt-3 gender-area">
           @if ($errors->has('sex'))
          <div class="text-danger">
         {{ $errors->first('sex') }}
@@ -77,14 +77,14 @@
           <input type="radio" name="sex" class="sex" value="3">
           <label class="sex-title" style="font-size:13px; font-weight: bold;">その他</label>
         </div>
-        <div class="mt-3">
+        <div class="form-position mt-3">
           @if ($errors->has('birth_day'))
              <div class="text-danger">
                 {{ $errors->first('birth_day') }}
              </div>
           @endif
 
-          <label class="d-block m-0 aa" style="font-size:13px; font-weight: bold;">生年月日</label>
+          <label class="form-position d-block m-0 aa" style="font-size:13px; font-weight: bold;">生年月日</label>
           <select class="old_year birth-select" name="old_year">
             <option value="none">-----</option>
             <!-- <option value="1985">1985</option>
@@ -182,7 +182,7 @@
           </select>
           <label style="font-size:13px; font-weight: bold;">日</label>
         </div>
-        <div class="mt-3">
+        <div class="form-position mt-3">
           @if ($errors->has('role'))
           <div class="text-danger">
            {{ $errors->first('role') }}
@@ -207,20 +207,20 @@
           </div>
           @endforeach
         </div>
-        <div class="mt-3">
+        <div class="form-position mt-3">
           @if ($errors->has('password'))
           <div class="text-danger">
             {{ $errors->first('password') }}
           </div>
           @endif
           <label class="d-block m-0" style="font-size:13px; font-weight: bold;">パスワード</label>
-          <div class="border-bottom border-primary">
+          <div class="form-line border-bottom border-primary" style="width:300px;">
             <input type="password" class="border-0 w-100 password" name="password">
           </div>
         </div>
-        <div class="mt-3">
+        <div class="form-position mt-3">
           <label class="d-block m-0" style="font-size:13px; font-weight: bold;">確認用パスワード</label>
-          <div class="border-bottom border-primary">
+          <div class="form-line border-bottom border-primary" style="width:300px;">
             <input type="password" class="border-0 w-100 password_confirmation" name="password_confirmation">
           </div>
         </div>

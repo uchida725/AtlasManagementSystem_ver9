@@ -556,6 +556,58 @@ li {
   cursor: pointer;
 }
 
+/* 投稿画面全体 */
+
+.post-top-box {
+  display: flex;
+  gap: 130px;
+  /* 左右間隔 */
+  padding: 30px;
+  /* 上下左右の余白 */
+  align-items: flex-start;
+  /* margin-left: 5%; */
+}
+
+.post-left {
+  /* flex: 1; */
+  /* 左カラムは余白いっぱい */
+  width: 700px;
+  margin-left: 2%;
+}
+
+.post-right {
+  width: 320px;
+  /* 右カラムは固定幅 */
+}
+
+.post_create_area,
+.category_area {
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post_create_area select,
+.post_create_area input,
+.post_create_area textarea,
+.category_area input,
+.category_area select {
+  margin-top: 5px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.post_create_area textarea {
+  height: 200px;
+  /* テキストエリア高さ調整 */
+}
+
+.btn-primary {
+  padding: 6px;
+}
+
 /* ユーザー検索 */
 
 .search_sidebar {

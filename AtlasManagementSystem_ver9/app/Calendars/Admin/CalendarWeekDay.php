@@ -54,7 +54,7 @@ class CalendarWeekDay{
         $count2 = $this->getReserveCount(2);
         $html[] = '<p class="day_part pt-1">'
             . '<a href="' . $url . '">2部</a>'
-            . '<span class="reserve-count">'.$count1.'</span>'
+            . '<span class="reserve-count">'.$count2.'</span>'
             . '</p>';
     }
 
@@ -63,7 +63,7 @@ class CalendarWeekDay{
         $count3 = $this->getReserveCount(3);
         $html[] = '<p class="day_part pt-1">'
             . '<a href="' . $url . '">3部</a>'
-            . '<span class="reserve-count">'.$count1.'</span>'
+            . '<span class="reserve-count">'.$count3.'</span>'
             . '</p>';
     }
 

@@ -213,6 +213,54 @@ li {
   width: 60%;
 }
 
+
+/* キャンセル確認モーダルのデザイン調整 */
+#cancelModal .modal-content {
+  align-items: center;
+  border-radius: 8px;
+  padding: 20px 30px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+  border: none;
+  width: 700px;
+}
+
+#cancelModal .modal-header {
+  display: none;
+  /* ヘッダー非表示でスッキリ */
+}
+
+#cancelModal .modal-body {
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.8;
+  padding-top: 10px;
+
+}
+
+#cancelModal .modal-footer {
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+  border-top: none;
+  padding-top: 10px;
+  margin-top: -3%;
+}
+
+#cancelModal .btn-secondary {
+  background-color: #007bff;
+  /* 青ボタン */
+  border: none;
+  padding: 6px 20px;
+}
+
+#cancelModal .btn-danger {
+  background-color: #d9534f;
+  /* 赤ボタン */
+  border: none;
+  padding: 6px 20px;
+}
+
 /* ーーーーー掲示板ーーーーー */
 
 

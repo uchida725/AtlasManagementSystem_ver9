@@ -33,12 +33,12 @@
     </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">戻る</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
         <form method="POST" action="{{ route('calendar.cancel') }}" id="cancelForm">
   @csrf
   @method('DELETE')
   <input type="hidden" name="delete_date" id="modalDeleteDate">
-  <button type="submit" class="btn btn-danger">キャンセルする</button>
+  <button type="submit" class="btn btn-danger">キャンセル</button>
 </form>
 
       </div>
